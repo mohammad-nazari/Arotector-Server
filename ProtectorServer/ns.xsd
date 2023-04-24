@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <schema targetNamespace="Protector"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="Protector"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <simpleType name="SettingLevel"><!-- ns__SettingLevel -->
+   <restriction base="xsd:string">
+    <enumeration value="Normal"/><!-- Normal -->
+    <!-- = 0 -->
+    <enumeration value="Disable"/><!-- Disable -->
+    <!-- = 1 -->
+    <enumeration value="Warning"/><!-- Warning -->
+    <!-- = 2 -->
+    <enumeration value="Minor"/><!-- Minor -->
+    <!-- = 3 -->
+    <enumeration value="Major"/><!-- Major -->
+    <!-- = 4 -->
+    <enumeration value="Critical"/><!-- Critical -->
+    <!-- = 5 -->
+   </restriction>
+  </simpleType>
+  <simpleType name="UserType"><!-- ns__UserType -->
+   <restriction base="xsd:string">
+    <enumeration value="Admin"/><!-- Admin -->
+    <!-- = 0 -->
+    <enumeration value="Control"/><!-- Control -->
+    <!-- = 1 -->
+    <enumeration value="Monitor"/><!-- Monitor -->
+    <!-- = 2 -->
+   </restriction>
+  </simpleType>
+  <simpleType name="SimcardType"><!-- ns__SimcardType -->
+   <restriction base="xsd:string">
+    <enumeration value="MCI"/><!-- MCI -->
+    <!-- = 0 -->
+    <enumeration value="IranCell"/><!-- IranCell -->
+    <!-- = 1 -->
+    <enumeration value="Taliya"/><!-- Taliya -->
+    <!-- = 2 -->
+    <enumeration value="RighTel"/><!-- RighTel -->
+    <!-- = 3 -->
+    <enumeration value="UnknownSim"/><!-- UnknownSim -->
+    <!-- = 4 -->
+   </restriction>
+  </simpleType>
+  <simpleType name="SensorType"><!-- ns__SensorType -->
+   <restriction base="xsd:string">
+    <enumeration value="Multi"/><!-- Multi -->
+    <!-- = 0 -->
+    <enumeration value="Mono"/><!-- Mono -->
+    <!-- = 1 -->
+   </restriction>
+  </simpleType>
+  <simpleType name="SensorName"><!-- ns__SensorName -->
+   <restriction base="xsd:string">
+    <enumeration value="TEMPERATURE"/><!-- TEMPERATURE -->
+    <!-- = 0 -->
+    <enumeration value="HUMIDITY"/><!-- HUMIDITY -->
+    <!-- = 1 -->
+    <enumeration value="H2S"/><!-- H2S -->
+    <!-- = 2 -->
+    <enumeration value="PRESSER"/><!-- PRESSER -->
+    <!-- = 3 -->
+    <enumeration value="GAS"/><!-- GAS -->
+    <!-- = 4 -->
+    <enumeration value="ACVOLTAGE"/><!-- ACVOLTAGE -->
+    <!-- = 5 -->
+    <enumeration value="ACVOLTAGE1"/><!-- ACVOLTAGE1 -->
+    <!-- = 6 -->
+    <enumeration value="ACVOLTAGE2"/><!-- ACVOLTAGE2 -->
+    <!-- = 7 -->
+    <enumeration value="ACVOLTAGE3"/><!-- ACVOLTAGE3 -->
+    <!-- = 8 -->
+    <enumeration value="ACAMPERE"/><!-- ACAMPERE -->
+    <!-- = 9 -->
+    <enumeration value="ACAMPERE1"/><!-- ACAMPERE1 -->
+    <!-- = 10 -->
+    <enumeration value="ACAMPERE2"/><!-- ACAMPERE2 -->
+    <!-- = 11 -->
+    <enumeration value="ACAMPERE3"/><!-- ACAMPERE3 -->
+    <!-- = 12 -->
+    <enumeration value="DCVOLTAGE"/><!-- DCVOLTAGE -->
+    <!-- = 13 -->
+    <enumeration value="DCAMPERE"/><!-- DCAMPERE -->
+    <!-- = 14 -->
+    <enumeration value="SMOKE"/><!-- SMOKE -->
+    <!-- = 15 -->
+    <enumeration value="MAGNET"/><!-- MAGNET -->
+    <!-- = 16 -->
+    <enumeration value="WATER"/><!-- WATER -->
+    <!-- = 17 -->
+    <enumeration value="MOTION"/><!-- MOTION -->
+    <!-- = 18 -->
+    <enumeration value="DIGITAL"/><!-- DIGITAL -->
+    <!-- = 19 -->
+    <enumeration value="UNKNOWN"/><!-- UNKNOWN -->
+    <!-- = 20 -->
+   </restriction>
+  </simpleType>
+  <complexType name="IP"><!-- ns__IP -->
+   <sequence>
+     <element name="ipFirst" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__IP::ipFirst -->
+     <element name="ipSecond" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__IP::ipSecond -->
+     <element name="ipThird" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__IP::ipThird -->
+     <element name="ipFourth" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__IP::ipFourth -->
+   </sequence>
+  </complexType>
+  <complexType name="Server"><!-- ns__Server -->
+   <sequence>
+     <element name="serverDNSAddress" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__Server::serverDNSAddress -->
+     <element name="serverIP" type="ns:IP" minOccurs="1" maxOccurs="1"/><!-- ns__Server::serverIP -->
+     <element name="serverPort" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Server::serverPort -->
+     <element name="serverError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__Server::serverError -->
+   </sequence>
+  </complexType>
+  <complexType name="Gprs"><!-- ns__Gprs -->
+   <sequence>
+     <element name="gprsDNSAddress" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__Gprs::gprsDNSAddress -->
+     <element name="gprsIP" type="ns:IP" minOccurs="1" maxOccurs="1"/><!-- ns__Gprs::gprsIP -->
+     <element name="gprsPort" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Gprs::gprsPort -->
+     <element name="gprsError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__Gprs::gprsError -->
+   </sequence>
+  </complexType>
+  <complexType name="Mobile"><!-- ns__Mobile -->
+   <sequence>
+     <element name="mobileNumber" type="xsd:long" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Mobile::mobileNumber -->
+     <element name="mobileSimCardType" type="ns:SimcardType" minOccurs="0" maxOccurs="1" default="MCI"/><!-- ns__Mobile::mobileSimCardType -->
+     <element name="mobileChargeValue" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Mobile::mobileChargeValue -->
+     <element name="mobileSignalValue" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Mobile::mobileSignalValue -->
+   </sequence>
+  </complexType>
+  <complexType name="Relay"><!-- ns__Relay -->
+   <sequence>
+     <element name="relayIndex" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Relay::relayIndex -->
+     <element name="relayOnOff" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Relay::relayOnOff -->
+   </sequence>
+  </complexType>
+  <complexType name="Sensor"><!-- ns__Sensor -->
+   <sequence>
+     <element name="sensorName" type="ns:SensorName" minOccurs="0" maxOccurs="1" default="TEMPERATURE"/><!-- ns__Sensor::sensorName -->
+     <element name="sensorNikeName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__Sensor::sensorNikeName -->
+     <element name="sensorValue" type="xsd:double" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Sensor::sensorValue -->
+     <element name="sensorCalibration" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Sensor::sensorCalibration -->
+     <element name="sensorMinimumValue" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Sensor::sensorMinimumValue -->
+     <element name="sensorMaximumValue" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Sensor::sensorMaximumValue -->
+     <element name="sensorMaximumThreshold" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Sensor::sensorMaximumThreshold -->
+     <element name="sensorMinimumThreshold" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Sensor::sensorMinimumThreshold -->
+     <element name="sensorSMSOnOff" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Sensor::sensorSMSOnOff -->
+     <element name="sensorBuzzerOnOff" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Sensor::sensorBuzzerOnOff -->
+     <element name="sensorRelay" type="ns:Relay" minOccurs="1" maxOccurs="1"/><!-- ns__Sensor::sensorRelay -->
+     <element name="sensorLEDFlag" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Sensor::sensorLEDFlag -->
+     <element name="sensorType" type="ns:SensorType" minOccurs="0" maxOccurs="1" default="Multi"/><!-- ns__Sensor::sensorType -->
+     <element name="sensorError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__Sensor::sensorError -->
+   </sequence>
+  </complexType>
+  <complexType name="Report"><!-- ns__Report -->
+   <sequence>
+     <element name="reportStartDate" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/><!-- ns__Report::reportStartDate -->
+     <element name="reportEndDate" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/><!-- ns__Report::reportEndDate -->
+   </sequence>
+  </complexType>
+  <complexType name="ActivityLog"><!-- ns__ActivityLog -->
+   <sequence>
+     <element name="activityLogStartEndDateTime" type="ns:Report" minOccurs="1" maxOccurs="1"/><!-- ns__ActivityLog::activityLogStartEndDateTime -->
+     <element name="activityLogData" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__ActivityLog::activityLogData -->
+     <element name="activityLogDevice" type="ns:Device" minOccurs="1" maxOccurs="1"/><!-- ns__ActivityLog::activityLogDevice -->
+     <element name="activityLogUser" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__ActivityLog::activityLogUser -->
+     <element name="activityError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__ActivityLog::activityError -->
+   </sequence>
+  </complexType>
+  <complexType name="UserLog"><!-- ns__UserLog -->
+   <sequence>
+     <element name="userLogStartEndDateTime" type="ns:Report" minOccurs="1" maxOccurs="1"/><!-- ns__UserLog::userLogStartEndDateTime -->
+     <element name="userLogData" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__UserLog::userLogData -->
+     <element name="userLogUser" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__UserLog::userLogUser -->
+     <element name="userLogError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__UserLog::userLogError -->
+   </sequence>
+  </complexType>
+  <complexType name="DeviceStatusLog"><!-- ns__DeviceStatusLog -->
+   <sequence>
+     <element name="statusLogStartEndDateTime" type="ns:Report" minOccurs="1" maxOccurs="1"/><!-- ns__DeviceStatusLog::statusLogStartEndDateTime -->
+     <element name="statusLogDevice" type="ns:Device" minOccurs="1" maxOccurs="1"/><!-- ns__DeviceStatusLog::statusLogDevice -->
+     <element name="statusLogError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__DeviceStatusLog::statusLogError -->
+   </sequence>
+  </complexType>
+  <complexType name="DeviceStatusInfo"><!-- ns__DeviceStatusInfo -->
+   <sequence>
+     <element name="deviceStatusInfoStartEndDateTime" type="ns:Report" minOccurs="1" maxOccurs="1"/><!-- ns__DeviceStatusInfo::deviceStatusInfoStartEndDateTime -->
+     <element name="deviceStatusInfoDevice" type="ns:Device" minOccurs="0" maxOccurs="unbounded"/><!-- ns__DeviceStatusInfo::deviceStatusInfoDevice -->
+     <element name="deviceStatusInfoErrorType" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/><!-- ns__DeviceStatusInfo::deviceStatusInfoErrorType -->
+   </sequence>
+  </complexType>
+  <complexType name="ErrorLog"><!-- ns__ErrorLog -->
+   <sequence>
+     <element name="errorLogDateTime" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/><!-- ns__ErrorLog::errorLogDateTime -->
+     <element name="errorLogDevice" type="ns:Device" minOccurs="1" maxOccurs="1"/><!-- ns__ErrorLog::errorLogDevice -->
+     <element name="errorLogType" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__ErrorLog::errorLogType -->
+     <element name="errorLogError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__ErrorLog::errorLogError -->
+   </sequence>
+  </complexType>
+  <complexType name="DeviceRules"><!-- ns__DeviceRules -->
+   <sequence>
+     <element name="userDeviceDevice" type="ns:Device" minOccurs="1" maxOccurs="1"/><!-- ns__DeviceRules::userDeviceDevice -->
+     <element name="userDeviceView" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__DeviceRules::userDeviceView -->
+     <element name="userDeviceUpdate" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__DeviceRules::userDeviceUpdate -->
+     <element name="userDeviceDelete" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__DeviceRules::userDeviceDelete -->
+   </sequence>
+  </complexType>
+  <complexType name="UserDevices"><!-- ns__UserDevices -->
+   <sequence>
+     <element name="userDevices" type="ns:DeviceRules" minOccurs="0" maxOccurs="unbounded"/><!-- ns__UserDevices::userDevices -->
+     <element name="userDeviceError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__UserDevices::userDeviceError -->
+   </sequence>
+  </complexType>
+  <complexType name="DataBaseInfo"><!-- ns__DataBaseInfo -->
+   <sequence>
+     <element name="dataBaseInfoServerName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__DataBaseInfo::dataBaseInfoServerName -->
+     <element name="dataBaseInfoPort" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__DataBaseInfo::dataBaseInfoPort -->
+     <element name="dataBaseInfoUserName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__DataBaseInfo::dataBaseInfoUserName -->
+     <element name="dataBaseInfoPassWord" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__DataBaseInfo::dataBaseInfoPassWord -->
+     <element name="dataBaseInfoError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__DataBaseInfo::dataBaseInfoError -->
+   </sequence>
+  </complexType>
+  <complexType name="CityLocation"><!-- ns__CityLocation -->
+   <sequence>
+     <element name="cityLocationCityName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__CityLocation::cityLocationCityName -->
+     <element name="cityLocationLocationsName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/><!-- ns__CityLocation::cityLocationLocationsName -->
+     <element name="cityLocationError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__CityLocation::cityLocationError -->
+   </sequence>
+  </complexType>
+  <!-- operation request element -->
+  <element name="GetDeviceStatus">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetDeviceStatus::requestUserInfo -->
+     <element name="requestDeviceInfo" type="ns:Device" minOccurs="1" maxOccurs="1"/><!-- ns__GetDeviceStatus::requestDeviceInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="Device">
+   <complexType>
+    <sequence>
+     <element name="deviceSerialNumber" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Device::deviceSerialNumber -->
+     <element name="deviceName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__Device::deviceName -->
+     <element name="deviceFirmWareVersion" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__Device::deviceFirmWareVersion -->
+     <element name="deviceNikeName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__Device::deviceNikeName -->
+     <element name="deviceLocation" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__Device::deviceLocation -->
+     <element name="deviceCity" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__Device::deviceCity -->
+     <element name="deviceSocket" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Device::deviceSocket -->
+     <element name="deviceDNSAddress" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__Device::deviceDNSAddress -->
+     <element name="deviceIP" type="ns:IP" minOccurs="1" maxOccurs="1"/><!-- ns__Device::deviceIP -->
+     <element name="devicePort" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__Device::devicePort -->
+     <element name="deviceDateTime" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/><!-- ns__Device::deviceDateTime -->
+     <element name="deviceMobileInfo" type="ns:Mobile" minOccurs="1" maxOccurs="1"/><!-- ns__Device::deviceMobileInfo -->
+     <element name="deviceServerInfo" type="ns:Server" minOccurs="1" maxOccurs="1"/><!-- ns__Device::deviceServerInfo -->
+     <element name="deviceGprsInfo" type="ns:Gprs" minOccurs="1" maxOccurs="1"/><!-- ns__Device::deviceGprsInfo -->
+     <element name="deviceSMSContact" type="xsd:long" minOccurs="0" maxOccurs="unbounded"/><!-- ns__Device::deviceSMSContact -->
+     <element name="deviceSMSConfig" type="xsd:long" minOccurs="0" maxOccurs="unbounded"/><!-- ns__Device::deviceSMSConfig -->
+     <element name="deviceFlags" type="xsd:string" minOccurs="0" maxOccurs="1" default="000000000000000000"/><!-- ns__Device::deviceFlags -->
+     <element name="deviceSMSCommand" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Device::deviceSMSCommand -->
+     <element name="deviceGSMCommand" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Device::deviceGSMCommand -->
+     <element name="deviceKeyBoardCommand" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Device::deviceKeyBoardCommand -->
+     <element name="deviceBuzzerOnOff" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Device::deviceBuzzerOnOff -->
+     <element name="deviceReset" type="xsd:boolean" minOccurs="0" maxOccurs="1" default="false"/><!-- ns__Device::deviceReset -->
+     <element name="deviceSensors" type="ns:Sensor" minOccurs="0" maxOccurs="unbounded"/><!-- ns__Device::deviceSensors -->
+     <element name="deviceError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__Device::deviceError -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetAllDeviceStatus">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetAllDeviceStatus::requestUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="UserDevice">
+   <complexType>
+    <sequence>
+     <element name="userDeviceUser" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__UserDevice::userDeviceUser -->
+     <element name="userDeviceDevices" type="ns:UserDevices" minOccurs="1" maxOccurs="1"/><!-- ns__UserDevice::userDeviceDevices -->
+     <element name="userDeviceError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__UserDevice::userDeviceError -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SetDeviceSetting">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__SetDeviceSetting::requestUserInfo -->
+     <element name="requestDeviceInfo" type="ns:Device" minOccurs="1" maxOccurs="1"/><!-- ns__SetDeviceSetting::requestDeviceInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="ErrorCode">
+   <complexType>
+    <sequence>
+     <element name="errorNumber" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__ErrorCode::errorNumber -->
+     <element name="errorMessage" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__ErrorCode::errorMessage -->
+     <element name="errorType" type="ns:SettingLevel" minOccurs="0" maxOccurs="1" default="Normal"/><!-- ns__ErrorCode::errorType -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SetAllDeviceSetting">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__SetAllDeviceSetting::requestUserInfo -->
+     <element name="requestDeviceInfo" type="ns:Device" minOccurs="1" maxOccurs="unbounded"/><!-- ns__SetAllDeviceSetting::requestDeviceInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="SetAllDeviceSettingResponse">
+   <complexType>
+    <sequence>
+     <element name="responseErrorInfo" type="ns:ErrorCode" minOccurs="1" maxOccurs="unbounded"/><!-- ns__SetAllDeviceSetting::responseErrorInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="DeleteDevices">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__DeleteDevices::requestUserInfo -->
+     <element name="requestDeviceList" type="ns:Device" minOccurs="1" maxOccurs="unbounded"/><!-- ns__DeleteDevices::requestDeviceList -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="Login">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__Login::requestUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="User">
+   <complexType>
+    <sequence>
+     <element name="userId" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__User::userId -->
+     <element name="userName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__User::userName -->
+     <element name="userPassword" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__User::userPassword -->
+     <element name="userNewPassword" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__User::userNewPassword -->
+     <element name="userFirstName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__User::userFirstName -->
+     <element name="userLastName" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__User::userLastName -->
+     <element name="userType" type="ns:UserType" minOccurs="0" maxOccurs="1" default="Monitor"/><!-- ns__User::userType -->
+     <element name="userKey" type="xsd:string" minOccurs="0" maxOccurs="1" default=""/><!-- ns__User::userKey -->
+     <element name="userSubmitDateTime" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/><!-- ns__User::userSubmitDateTime -->
+     <element name="userError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__User::userError -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetUserDeviceList">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetUserDeviceList::requestUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetAllDeviceList">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetAllDeviceList::requestUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetUsersList">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetUsersList::requestUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="UsersList">
+   <complexType>
+    <sequence>
+     <element name="usersListUsers" type="ns:User" minOccurs="0" maxOccurs="unbounded"/><!-- ns__UsersList::usersListUsers -->
+     <element name="usersListError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__UsersList::usersListError -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="AddUser">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__AddUser::requestUserInfo -->
+     <element name="requestNewUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__AddUser::requestNewUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="UpdateUser">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__UpdateUser::requestUserInfo -->
+     <element name="requestNewUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__UpdateUser::requestNewUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="DeleteUser">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__DeleteUser::requestUserInfo -->
+     <element name="requestDeleteUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__DeleteUser::requestDeleteUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="AssignDeviceToUser">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__AssignDeviceToUser::requestUserInfo -->
+     <element name="requestUserDeviceInfo" type="ns:UserDevice" minOccurs="1" maxOccurs="1"/><!-- ns__AssignDeviceToUser::requestUserDeviceInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="DeleteDeviceFromUserList">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__DeleteDeviceFromUserList::requestUserInfo -->
+     <element name="requestUserDeviceInfo" type="ns:UserDevice" minOccurs="1" maxOccurs="1"/><!-- ns__DeleteDeviceFromUserList::requestUserDeviceInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetUserDevices">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetUserDevices::requestUserInfo -->
+     <element name="requestSelectedUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetUserDevices::requestSelectedUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SaveActivityLog">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__SaveActivityLog::requestUserInfo -->
+     <element name="requestActivityLogInfo" type="ns:ActivityLog" minOccurs="1" maxOccurs="1"/><!-- ns__SaveActivityLog::requestActivityLogInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetActivityLog">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetActivityLog::requestUserInfo -->
+     <element name="requestReportInfo" type="ns:Report" minOccurs="1" maxOccurs="1"/><!-- ns__GetActivityLog::requestReportInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetActivityLogResponse">
+   <complexType>
+    <sequence>
+     <element name="responseActivityLogInfo" type="ns:ActivityLog" minOccurs="1" maxOccurs="unbounded"/><!-- ns__GetActivityLog::responseActivityLogInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SaveUserLog">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__SaveUserLog::requestUserInfo -->
+     <element name="requestActivityLogInfo" type="ns:UserLog" minOccurs="1" maxOccurs="1"/><!-- ns__SaveUserLog::requestActivityLogInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetUserLog">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetUserLog::requestUserInfo -->
+     <element name="requestReportInfo" type="ns:Report" minOccurs="1" maxOccurs="1"/><!-- ns__GetUserLog::requestReportInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetUserLogResponse">
+   <complexType>
+    <sequence>
+     <element name="responseActivityLogInfo" type="ns:UserLog" minOccurs="1" maxOccurs="unbounded"/><!-- ns__GetUserLog::responseActivityLogInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SaveDeviceStatusLog">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__SaveDeviceStatusLog::requestUserInfo -->
+     <element name="requestStatusLogInfo" type="ns:DeviceStatusLog" minOccurs="1" maxOccurs="1"/><!-- ns__SaveDeviceStatusLog::requestStatusLogInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetDeviceStatusLog">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetDeviceStatusLog::requestUserInfo -->
+     <element name="requestStatusLogInfo" type="ns:DeviceStatusInfo" minOccurs="1" maxOccurs="1"/><!-- ns__GetDeviceStatusLog::requestStatusLogInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="DeviceStatusLogList">
+   <complexType>
+    <sequence>
+     <element name="statusLogListStatus" type="ns:DeviceStatusLog" minOccurs="0" maxOccurs="unbounded"/><!-- ns__DeviceStatusLogList::statusLogListStatus -->
+     <element name="statusLogListError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__DeviceStatusLogList::statusLogListError -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetServerOptions">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetServerOptions::requestUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="ServerOptions">
+   <complexType>
+    <sequence>
+     <element name="serverOptionsDataBaseInfo" type="ns:DataBaseInfo" minOccurs="1" maxOccurs="1"/><!-- ns__ServerOptions::serverOptionsDataBaseInfo -->
+     <element name="serverOptionsTimeRepeat" type="xsd:int" minOccurs="0" maxOccurs="1" default="0"/><!-- ns__ServerOptions::serverOptionsTimeRepeat -->
+     <element name="serverOptionsError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__ServerOptions::serverOptionsError -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SetServerOptions">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__SetServerOptions::requestUserInfo -->
+     <element name="serverOptions" type="ns:ServerOptions" minOccurs="1" maxOccurs="1"/><!-- ns__SetServerOptions::serverOptions -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetCityAndLocations">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__GetCityAndLocations::requestUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="AllCityLocatoins">
+   <complexType>
+    <sequence>
+     <element name="allCityLocatoins" type="ns:CityLocation" minOccurs="0" maxOccurs="unbounded"/><!-- ns__AllCityLocatoins::allCityLocatoins -->
+     <element name="allCityLocatoinsError" type="ns:ErrorCode" minOccurs="1" maxOccurs="1"/><!-- ns__AllCityLocatoins::allCityLocatoinsError -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="ChangeCityName">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeCityName::requestUserInfo -->
+     <element name="oldCityName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeCityName::oldCityName -->
+     <element name="newCityName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeCityName::newCityName -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="ChangeLocationName">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeLocationName::requestUserInfo -->
+     <element name="oldCityName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeLocationName::oldCityName -->
+     <element name="newCityName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeLocationName::newCityName -->
+     <element name="oldLocationName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeLocationName::oldLocationName -->
+     <element name="newLocationName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeLocationName::newLocationName -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="ChangeDeviceName">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="ns:User" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeDeviceName::requestUserInfo -->
+     <element name="deviceSerialNumber" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeDeviceName::deviceSerialNumber -->
+     <element name="newCityName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeDeviceName::newCityName -->
+     <element name="newLocationName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeDeviceName::newLocationName -->
+     <element name="newDeviceName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__ChangeDeviceName::newDeviceName -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="TestWorld">
+   <complexType>
+    <sequence>
+     <element name="requestUserInfo" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/><!-- ns__TestWorld::requestUserInfo -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="TestWorldResponse">
+   <complexType>
+    <sequence>
+     <element name="responseErrorInfo" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/><!-- ns__TestWorld::responseErrorInfo -->
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+

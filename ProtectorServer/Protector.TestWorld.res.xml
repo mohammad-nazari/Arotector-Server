@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="Protector">
+ <SOAP-ENV:Body>
+  <ns:TestWorldResponse>
+   <!-- struct tm &responseErrorInfo -->
+   <responseErrorInfo>
+    <!-- int tm_sec -->
+    <tm-sec>0</tm-sec>
+    <!-- int tm_min -->
+    <tm-min>0</tm-min>
+    <!-- int tm_hour -->
+    <tm-hour>0</tm-hour>
+    <!-- int tm_mday -->
+    <tm-mday>1</tm-mday>
+    <!-- int tm_mon -->
+    <tm-mon>0</tm-mon>
+    <!-- int tm_year -->
+    <tm-year>1900</tm-year>
+    <!-- int tm_isdst -->
+    <tm-isdst>0</tm-isdst>
+   </responseErrorInfo>
+  </ns:TestWorldResponse>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="Protector">
+ <SOAP-ENV:Body>
+  <!-- ns__DeleteDeviceFromUserList(..., ns__ErrorCode &responseErrorInfo) -->
+  <ns:ErrorCode>
+   <!-- int errorNumber -->
+   <errorNumber>0</errorNumber>
+   <!-- std::string errorMessage -->
+   <errorMessage></errorMessage>
+   <!-- enum ns__SettingLevel errorType -->
+   <errorType>Normal</errorType>
+  </ns:ErrorCode>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

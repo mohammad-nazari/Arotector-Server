@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <schema targetNamespace="Options"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="Options"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <complexType name="DataBaseInfo"><!-- ns__DataBaseInfo -->
+   <sequence>
+     <element name="dataBaseInfoServerName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__DataBaseInfo::dataBaseInfoServerName -->
+     <element name="dataBaseInfoPort" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns__DataBaseInfo::dataBaseInfoPort -->
+     <element name="dataBaseInfoUserName" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__DataBaseInfo::dataBaseInfoUserName -->
+     <element name="dataBaseInfoPassWord" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__DataBaseInfo::dataBaseInfoPassWord -->
+   </sequence>
+  </complexType>
+  <complexType name="ServerOptions"><!-- ns__ServerOptions -->
+   <sequence>
+     <element name="optionsDataBaseInfo" type="ns:DataBaseInfo" minOccurs="1" maxOccurs="1"/><!-- ns__ServerOptions::optionsDataBaseInfo -->
+     <element name="optionsTimeRepeat" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns__ServerOptions::optionsTimeRepeat -->
+   </sequence>
+  </complexType>
+ </schema>
+

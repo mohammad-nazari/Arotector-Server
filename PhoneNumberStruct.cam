@@ -1,0 +1,21 @@
+<as:CAM
+ xmlns:as="http://www.oasis-open.org/committees/cam"
+ xmlns:camed="http://jcam.org.uk/editor"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace" CAMlevel="1" version="1.0" cameditor="3.2.0">
+  <as:Header>
+    <as:Description>Generated for PhoneNumberStruct  by XSD 2 CAM generator v2.31</as:Description>
+    <as:Owner>To be Completed</as:Owner>
+    <as:Version>0.1</as:Version>
+    <as:DateTime>2014-12-17T10:04:50</as:DateTime>
+  </as:Header>
+  <as:AssemblyStructure>
+    <as:Structure taxonomy="XML" ID="PhoneNumberStruct" reference="" />
+  </as:AssemblyStructure>
+  <as:BusinessUseContext>
+    <as:Rules>
+      <as:default>
+        <as:context />
+      </as:default>
+    </as:Rules>
+  </as:BusinessUseContext>
+</as:CAM>

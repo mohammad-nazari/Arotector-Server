@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="Protector">
+ <SOAP-ENV:Body>
+  <!-- ns__ChangeDeviceName(..., ns__User requestUserInfo, int deviceSerialNumber, std::string newCityName, std::string newLocationName, std::string newDeviceName, ...) -->
+  <ns:ChangeDeviceName>
+   <!-- ns__User requestUserInfo -->
+   <requestUserInfo>
+    <!-- int userId -->
+    <userId>0</userId>
+    <!-- std::string userName -->
+    <userName></userName>
+    <!-- std::string userPassword -->
+    <userPassword></userPassword>
+    <!-- std::string userNewPassword -->
+    <userNewPassword></userNewPassword>
+    <!-- std::string userFirstName -->
+    <userFirstName></userFirstName>
+    <!-- std::string userLastName -->
+    <userLastName></userLastName>
+    <!-- enum ns__UserType userType -->
+    <userType>Monitor</userType>
+    <!-- std::string userKey -->
+    <userKey></userKey>
+    <userSubmitDateTime>2016-03-29T20:01:15Z</userSubmitDateTime>
+    <!-- ns__ErrorCode userError -->
+    <userError>
+     <!-- int errorNumber -->
+     <errorNumber>0</errorNumber>
+     <!-- std::string errorMessage -->
+     <errorMessage></errorMessage>
+     <!-- enum ns__SettingLevel errorType -->
+     <errorType>Normal</errorType>
+    </userError>
+   </requestUserInfo>
+   <!-- int deviceSerialNumber -->
+   <deviceSerialNumber>0</deviceSerialNumber>
+   <!-- std::string newCityName -->
+   <newCityName></newCityName>
+   <!-- std::string newLocationName -->
+   <newLocationName></newLocationName>
+   <!-- std::string newDeviceName -->
+   <newDeviceName></newDeviceName>
+  </ns:ChangeDeviceName>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="Protector">
+ <SOAP-ENV:Body>
+  <!-- ns__GetCityAndLocations(..., ns__AllCityLocatoins &responseCityLocationInfo) -->
+  <ns:AllCityLocatoins>
+   <!-- std::vector<ns__CityLocation> allCityLocatoins -->
+   <allCityLocatoins>
+    <!-- std::string cityLocationCityName -->
+    <cityLocationCityName></cityLocationCityName>
+    <!-- std::vector<std::string> cityLocationLocationsName -->
+    <cityLocationLocationsName></cityLocationLocationsName>
+    <!-- ns__ErrorCode cityLocationError -->
+    <cityLocationError>
+     <!-- int errorNumber -->
+     <errorNumber>0</errorNumber>
+     <!-- std::string errorMessage -->
+     <errorMessage></errorMessage>
+     <!-- enum ns__SettingLevel errorType -->
+     <errorType>Normal</errorType>
+    </cityLocationError>
+   </allCityLocatoins>
+   <!-- ns__ErrorCode allCityLocatoinsError -->
+   <allCityLocatoinsError>
+    <!-- int errorNumber -->
+    <errorNumber>0</errorNumber>
+    <!-- std::string errorMessage -->
+    <errorMessage></errorMessage>
+    <!-- enum ns__SettingLevel errorType -->
+    <errorType>Normal</errorType>
+   </allCityLocatoinsError>
+  </ns:AllCityLocatoins>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

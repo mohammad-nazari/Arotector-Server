@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="Protector">
+ <SOAP-ENV:Body>
+  <!-- ns__GetServerOptions(..., ns__ServerOptions &serverOptions) -->
+  <ns:ServerOptions>
+   <!-- ns__DataBaseInfo serverOptionsDataBaseInfo -->
+   <serverOptionsDataBaseInfo>
+    <!-- std::string dataBaseInfoServerName -->
+    <dataBaseInfoServerName></dataBaseInfoServerName>
+    <!-- int dataBaseInfoPort -->
+    <dataBaseInfoPort>0</dataBaseInfoPort>
+    <!-- std::string dataBaseInfoUserName -->
+    <dataBaseInfoUserName></dataBaseInfoUserName>
+    <!-- std::string dataBaseInfoPassWord -->
+    <dataBaseInfoPassWord></dataBaseInfoPassWord>
+    <!-- ns__ErrorCode dataBaseInfoError -->
+    <dataBaseInfoError>
+     <!-- int errorNumber -->
+     <errorNumber>0</errorNumber>
+     <!-- std::string errorMessage -->
+     <errorMessage></errorMessage>
+     <!-- enum ns__SettingLevel errorType -->
+     <errorType>Normal</errorType>
+    </dataBaseInfoError>
+   </serverOptionsDataBaseInfo>
+   <!-- int serverOptionsTimeRepeat -->
+   <serverOptionsTimeRepeat>0</serverOptionsTimeRepeat>
+   <!-- ns__ErrorCode serverOptionsError -->
+   <serverOptionsError>
+    <!-- int errorNumber -->
+    <errorNumber>0</errorNumber>
+    <!-- std::string errorMessage -->
+    <errorMessage></errorMessage>
+    <!-- enum ns__SettingLevel errorType -->
+    <errorType>Normal</errorType>
+   </serverOptionsError>
+  </ns:ServerOptions>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="Protector">
+ <SOAP-ENV:Body>
+  <!-- ns__GetDeviceStatusLog(..., ns__DeviceStatusLogList &responseStatusLogList) -->
+  <ns:DeviceStatusLogList>
+   <!-- std::vector<ns__DeviceStatusLog> statusLogListStatus -->
+   <statusLogListStatus>
+    <!-- ns__Report statusLogStartEndDateTime -->
+    <statusLogStartEndDateTime>
+     <reportStartDate>2016-03-29T20:01:15Z</reportStartDate>
+     <reportEndDate>2016-03-29T20:01:15Z</reportEndDate>
+    </statusLogStartEndDateTime>
+    <!-- ns__Device statusLogDevice -->
+    <statusLogDevice>
+     <!-- int deviceSerialNumber -->
+     <deviceSerialNumber>0</deviceSerialNumber>
+     <!-- std::string deviceName -->
+     <deviceName></deviceName>
+     <!-- std::string deviceFirmWareVersion -->
+     <deviceFirmWareVersion></deviceFirmWareVersion>
+     <!-- std::string deviceNikeName -->
+     <deviceNikeName></deviceNikeName>
+     <!-- std::string deviceLocation -->
+     <deviceLocation></deviceLocation>
+     <!-- std::string deviceCity -->
+     <deviceCity></deviceCity>
+     <!-- int deviceSocket -->
+     <deviceSocket>0</deviceSocket>
+     <!-- std::string deviceDNSAddress -->
+     <deviceDNSAddress></deviceDNSAddress>
+     <!-- ns__IP deviceIP -->
+     <deviceIP>
+      <!-- int ipFirst -->
+      <ipFirst>0</ipFirst>
+      <!-- int ipSecond -->
+      <ipSecond>0</ipSecond>
+      <!-- int ipThird -->
+      <ipThird>0</ipThird>
+      <!-- int ipFourth -->
+      <ipFourth>0</ipFourth>
+     </deviceIP>
+     <!-- int devicePort -->
+     <devicePort>0</devicePort>
+     <deviceDateTime>2016-03-29T20:01:15Z</deviceDateTime>
+     <!-- ns__Mobile deviceMobileInfo -->
+     <deviceMobileInfo>
+      <!-- LONG64 mobileNumber -->
+      <mobileNumber>0</mobileNumber>
+      <!-- enum ns__SimcardType mobileSimCardType -->
+      <mobileSimCardType>MCI</mobileSimCardType>
+      <!-- int mobileChargeValue -->
+      <mobileChargeValue>0</mobileChargeValue>
+      <!-- int mobileSignalValue -->
+      <mobileSignalValue>0</mobileSignalValue>
+     </deviceMobileInfo>
+     <!-- ns__Server deviceServerInfo -->
+     <deviceServerInfo>
+      <!-- std::string serverDNSAddress -->
+      <serverDNSAddress></serverDNSAddress>
+      <!-- ns__IP serverIP -->
+      <serverIP>
+       <!-- int ipFirst -->
+       <ipFirst>0</ipFirst>
+       <!-- int ipSecond -->
+       <ipSecond>0</ipSecond>
+       <!-- int ipThird -->
+       <ipThird>0</ipThird>
+       <!-- int ipFourth -->
+       <ipFourth>0</ipFourth>
+      </serverIP>
+      <!-- int serverPort -->
+      <serverPort>0</serverPort>
+      <!-- ns__ErrorCode serverError -->
+      <serverError>
+       <!-- int errorNumber -->
+       <errorNumber>0</errorNumber>
+       <!-- std::string errorMessage -->
+       <errorMessage></errorMessage>
+       <!-- enum ns__SettingLevel errorType -->
+       <errorType>Normal</errorType>
+      </serverError>
+     </deviceServerInfo>
+     <!-- ns__Gprs deviceGprsInfo -->
+     <deviceGprsInfo>
+      <!-- std::string gprsDNSAddress -->
+      <gprsDNSAddress></gprsDNSAddress>
+      <!-- ns__IP gprsIP -->
+      <gprsIP>
+       <!-- int ipFirst -->
+       <ipFirst>0</ipFirst>
+       <!-- int ipSecond -->
+       <ipSecond>0</ipSecond>
+       <!-- int ipThird -->
+       <ipThird>0</ipThird>
+       <!-- int ipFourth -->
+       <ipFourth>0</ipFourth>
+      </gprsIP>
+      <!-- int gprsPort -->
+      <gprsPort>0</gprsPort>
+      <!-- ns__ErrorCode gprsError -->
+      <gprsError>
+       <!-- int errorNumber -->
+       <errorNumber>0</errorNumber>
+       <!-- std::string errorMessage -->
+       <errorMessage></errorMessage>
+       <!-- enum ns__SettingLevel errorType -->
+       <errorType>Normal</errorType>
+      </gprsError>
+     </deviceGprsInfo>
+     <!-- std::vector<LONG64> deviceSMSContact -->
+     <deviceSMSContact>0</deviceSMSContact>
+     <!-- std::vector<LONG64> deviceSMSConfig -->
+     <deviceSMSConfig>0</deviceSMSConfig>
+     <!-- std::string deviceFlags -->
+     <deviceFlags>000000000000000000</deviceFlags>
+     <!-- bool deviceSMSCommand -->
+     <deviceSMSCommand>false</deviceSMSCommand>
+     <!-- bool deviceGSMCommand -->
+     <deviceGSMCommand>false</deviceGSMCommand>
+     <!-- bool deviceKeyBoardCommand -->
+     <deviceKeyBoardCommand>false</deviceKeyBoardCommand>
+     <!-- bool deviceBuzzerOnOff -->
+     <deviceBuzzerOnOff>false</deviceBuzzerOnOff>
+     <!-- bool deviceReset -->
+     <deviceReset>false</deviceReset>
+     <!-- std::vector<ns__Sensor> deviceSensors -->
+     <deviceSensors>
+      <!-- enum ns__SensorName sensorName -->
+      <sensorName>TEMPERATURE</sensorName>
+      <!-- std::string sensorNikeName -->
+      <sensorNikeName></sensorNikeName>
+      <!-- double sensorValue -->
+      <sensorValue>0</sensorValue>
+      <!-- int sensorCalibration -->
+      <sensorCalibration>0</sensorCalibration>
+      <!-- int sensorMinimumValue -->
+      <sensorMinimumValue>0</sensorMinimumValue>
+      <!-- int sensorMaximumValue -->
+      <sensorMaximumValue>0</sensorMaximumValue>
+      <!-- int sensorMaximumThreshold -->
+      <sensorMaximumThreshold>0</sensorMaximumThreshold>
+      <!-- int sensorMinimumThreshold -->
+      <sensorMinimumThreshold>0</sensorMinimumThreshold>
+      <!-- bool sensorSMSOnOff -->
+      <sensorSMSOnOff>false</sensorSMSOnOff>
+      <!-- bool sensorBuzzerOnOff -->
+      <sensorBuzzerOnOff>false</sensorBuzzerOnOff>
+      <!-- ns__Relay sensorRelay -->
+      <sensorRelay>
+       <!-- int relayIndex -->
+       <relayIndex>0</relayIndex>
+       <!-- bool relayOnOff -->
+       <relayOnOff>false</relayOnOff>
+      </sensorRelay>
+      <!-- bool sensorLEDFlag -->
+      <sensorLEDFlag>false</sensorLEDFlag>
+      <!-- enum ns__SensorType sensorType -->
+      <sensorType>Multi</sensorType>
+      <!-- ns__ErrorCode sensorError -->
+      <sensorError>
+       <!-- int errorNumber -->
+       <errorNumber>0</errorNumber>
+       <!-- std::string errorMessage -->
+       <errorMessage></errorMessage>
+       <!-- enum ns__SettingLevel errorType -->
+       <errorType>Normal</errorType>
+      </sensorError>
+     </deviceSensors>
+     <!-- ns__ErrorCode deviceError -->
+     <deviceError>
+      <!-- int errorNumber -->
+      <errorNumber>0</errorNumber>
+      <!-- std::string errorMessage -->
+      <errorMessage></errorMessage>
+      <!-- enum ns__SettingLevel errorType -->
+      <errorType>Normal</errorType>
+     </deviceError>
+    </statusLogDevice>
+    <!-- ns__ErrorCode statusLogError -->
+    <statusLogError>
+     <!-- int errorNumber -->
+     <errorNumber>0</errorNumber>
+     <!-- std::string errorMessage -->
+     <errorMessage></errorMessage>
+     <!-- enum ns__SettingLevel errorType -->
+     <errorType>Normal</errorType>
+    </statusLogError>
+   </statusLogListStatus>
+   <!-- ns__ErrorCode statusLogListError -->
+   <statusLogListError>
+    <!-- int errorNumber -->
+    <errorNumber>0</errorNumber>
+    <!-- std::string errorMessage -->
+    <errorMessage></errorMessage>
+    <!-- enum ns__SettingLevel errorType -->
+    <errorType>Normal</errorType>
+   </statusLogListError>
+  </ns:DeviceStatusLogList>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
